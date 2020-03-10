@@ -102,10 +102,10 @@ class Login extends Component {
                 }),
               )}
             <UserName
-              name="userName"
+              name="userCode"
               placeholder={`${formatMessage({
                 id: 'userandlogin.login.userName',
-              })}: admin or user`}
+              })}`}
               rules={[
                 {
                   required: true,
@@ -119,7 +119,7 @@ class Login extends Component {
               name="password"
               placeholder={`${formatMessage({
                 id: 'userandlogin.login.password',
-              })}: ant.design`}
+              })}`}
               rules={[
                 {
                   required: true,
@@ -137,7 +137,7 @@ class Login extends Component {
               }}
             />
           </Tab>
-          <Tab
+          {/*<Tab
             key="mobile"
             tab={formatMessage({
               id: 'userandlogin.login.tab-login-mobile',
@@ -193,7 +193,7 @@ class Login extends Component {
                 },
               ]}
             />
-          </Tab>
+          </Tab>*/}
           <div>
             <Checkbox checked={autoLogin} onChange={this.changeAutoLogin}>
               <FormattedMessage id="userandlogin.login.remember-me" />
@@ -210,7 +210,7 @@ class Login extends Component {
           <Submit loading={submitting}>
             <FormattedMessage id="userandlogin.login.login" />
           </Submit>
-          <div className={styles.other}>
+          {/*<div className={styles.other}>
             <FormattedMessage id="userandlogin.login.sign-in-with" />
             <AlipayCircleOutlined className={styles.icon} />
             <TaobaoCircleOutlined className={styles.icon} />
@@ -218,7 +218,7 @@ class Login extends Component {
             <Link className={styles.register} to="/user/register">
               <FormattedMessage id="userandlogin.login.signup" />
             </Link>
-          </div>
+          </div>*/}
         </LoginComponents>
       </div>
     );

@@ -9,7 +9,11 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const responseData = yield call(fakeAccountLogin, payload);
+      const response = {
+        type: payload.type,
+        status: responseData.success ? 'ok' : 'error'
+      };
       yield put({
         type: 'changeLoginStatus',
         payload: response,
