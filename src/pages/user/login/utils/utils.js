@@ -13,8 +13,7 @@ export function setAuthority(authority) {
       window.reloadAuthorized();
     }
   } catch (error) {
-    // do not need do anything
+    console.log(error);
   }
-
   return authority;
 }

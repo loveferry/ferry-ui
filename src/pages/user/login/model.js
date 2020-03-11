@@ -12,8 +12,10 @@ const Model = {
       const responseData = yield call(fakeAccountLogin, payload);
       const response = {
         type: payload.type,
-        status: responseData.success ? 'ok' : 'error'
+        status: responseData.success ? 'ok' : 'error',
+        currentAuthority: responseData.success ? 'admin' : 'guest',
       };
+      debugger
       yield put({
         type: 'changeLoginStatus',
         payload: response,
