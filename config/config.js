@@ -124,6 +124,19 @@ export default {
           authority: ['admin'],
           routes: [
             {
+              name: 'document',
+              icon: 'smile',
+              path: '/document',
+              routes: [
+                {
+                  name: 'template',
+                  icon: 'smile',
+                  path: '/document/template',
+                  component: './document/template',
+                },
+              ],
+            },
+            {
               path: '/dashboard',
               name: 'dashboard',
               icon: 'dashboard',
@@ -330,8 +343,8 @@ export default {
             },
             {
               path: '/',
-              redirect: '/dashboard/analysis',
-              authority: ['admin', 'user'],
+              redirect: '/document/template',
+              authority: ['admin'],
             },
             {
               component: '404',

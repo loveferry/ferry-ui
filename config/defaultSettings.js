@@ -13,5 +13,5 @@ export default {
   },
   title: '摆渡',
   pwa: false,
-  iconfontUrl: '',
+  iconfontUrl: '/',
 };
