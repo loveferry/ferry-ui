@@ -10,13 +10,13 @@ const Model = {
       const response = yield call(queryFakeList, payload);
       yield put({
         type: 'queryList',
-        payload: Array.isArray(response) ? response : [],
+        payload: Array.isArray(response ? response.maps : []) ? response : [],
       });
     },
   },
   reducers: {
-    queryList(state, action) {
-      return { ...state, list: action.payload };
+    queryList(state, {payload}) {
+      return { ...state, list: payload.maps };
     },
   },
 };

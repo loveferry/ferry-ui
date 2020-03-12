@@ -15,7 +15,6 @@ const Model = {
         status: responseData.success ? 'ok' : 'error',
         currentAuthority: responseData.success ? 'admin' : 'guest',
       };
-      debugger
       yield put({
         type: 'changeLoginStatus',
         payload: response,

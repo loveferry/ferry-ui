@@ -4,5 +4,8 @@ export async function queryFakeList(params) {
   /*return request('/api/fake_list', {
     params,
   });*/
-  return request('/api/doc/template/query',{params,})
+  return request('/api/doc/template/query',{
+    method: 'GET',
+    params,
+  });
 }

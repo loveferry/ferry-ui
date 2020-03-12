@@ -13,7 +13,8 @@ class Template extends Component {
     dispatch({
       type: 'template/fetch',
       payload: {
-        count: 8,
+        page: 1,
+        pageSize: 8
       },
     });
   }
@@ -54,17 +55,17 @@ class Template extends Component {
             }}
             dataSource={[nullData, ...list]}
             renderItem={item => {
-              if (item && item.id) {
+              if (item && item.templateId) {
                 return (
-                  <List.Item key={item.id}>
+                  <List.Item key={item.templateId}>
                     <Card
                       hoverable
                       className={styles.card}
                       actions={[<a key="option1">操作一</a>, <a key="option2">操作二</a>]}
                     >
                       <Card.Meta
-                        avatar={<img alt="" className={styles.cardAvatar} src={item.avatar}/>}
-                        title={<a>{item.title}</a>}
+                        avatar={<img alt="" className={styles.cardAvatar} src={item.templateImage || "47.100.232.59/u01/ferry/doc/404.jpg"}/>}
+                        title={<a>{item.templateName}</a>}
                         description={
                           <Paragraph
                             className={styles.item}
