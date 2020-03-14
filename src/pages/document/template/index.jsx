@@ -1,5 +1,5 @@
-import {PlusOutlined} from '@ant-design/icons';
-import {Button, Card, List, Typography} from 'antd';
+import {DownloadOutlined, PlusOutlined, UploadOutlined} from '@ant-design/icons';
+import {Button, Card, message, List, Typography, Upload} from 'antd';
 import React, {Component} from 'react';
 import {PageHeaderWrapper} from '@ant-design/pro-layout';
 import {connect} from 'dva';
@@ -17,6 +17,10 @@ class Template extends Component {
         pageSize: 8
       },
     });
+  }
+
+  download(templateId) {
+    window.location.href = '/api/sys/attachment/download?sourceType=DOC_TEMPLATE&sourceKey='+templateId;
   }
 
   render() {
@@ -61,10 +65,45 @@ class Template extends Component {
                     <Card
                       hoverable
                       className={styles.card}
-                      actions={[<a key="option1">操作一</a>, <a key="option2">操作二</a>]}
+                      actions={[
+                        <Upload {
+                                  ...{
+                                    name: 'files',
+                                    action: '/api/sys/attachment/upload',
+                                    method: 'POST',
+                                    multiple: false,   // 是否支持多选文件
+                                    accept: '.doc,.docx',
+                                    data: {
+                                      sourceType: "DOC_TEMPLATE",
+                                      sourceKey: item.templateId
+                                    },
+                                    onChange(info) {
+                                      if (info.file.status === 'done') {
+                                        if(info.file.response.success){
+                                          message.success(`${info.file.name} 上传成功`);
+                                        }else{
+                                          message.error(`${info.file.name} ${info.file.response.message}`);
+                                        }
+                                      } else if (info.file.status === 'error') {
+                                        message.error(`${info.file.name} 上传失败`);
+                                      }
+                                    },
+                                  }
+                                } showUploadList={false}>
+                          <Button>
+                            <UploadOutlined />
+                            上传
+                          </Button>
+                        </Upload>,
+                        // <a key="upload"><UploadOutlined />上传</a>,
+                        <Button onClick={() => this.download(item.templateId)}>
+                          <DownloadOutlined />
+                          下载
+                        </Button>
+                      ]}
                     >
                       <Card.Meta
-                        avatar={<img alt="" className={styles.cardAvatar} src={item.templateImage || "47.100.232.59/u01/ferry/doc/404.jpg"}/>}
+                        avatar={<img alt="" className={styles.cardAvatar} src={item.templateImage  || "http://47.100.232.59/u01/ferry/doc/404.jpg"}/>}
                         title={<a>{item.templateName}</a>}
                         description={
                           <Paragraph

@@ -1,4 +1,5 @@
-import { queryFakeList } from './service';
+import { queryFakeList, downloadFile } from './service';
+import {notification, message} from "antd";
 
 const Model = {
   namespace: 'template',
@@ -16,6 +17,13 @@ const Model = {
   },
   reducers: {
     queryList(state, {payload}) {
+      if(!payload.success){
+        notification.error({
+          message: `查询错误`,
+          description: payload.message,
+        });
+        return ;
+      }
       return { ...state, list: payload.maps };
     },
   },
