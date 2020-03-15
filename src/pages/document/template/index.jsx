@@ -23,6 +23,10 @@ class Template extends Component {
     window.location.href = '/api/sys/attachment/download?sourceType=DOC_TEMPLATE&sourceKey='+templateId;
   }
 
+  add(props) {
+    props.history.push('/document/template/definition');
+  }
+
   render() {
     const {
       template: {list},
@@ -123,7 +127,7 @@ class Template extends Component {
 
               return (
                 <List.Item>
-                  <Button type="dashed" className={styles.newButton}>
+                  <Button type="dashed" className={styles.newButton} onClick={() => this.add(this.props)}>
                     <PlusOutlined/> 新增产品
                   </Button>
                 </List.Item>

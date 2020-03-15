@@ -50,5 +50,6 @@ export default {
   'menu.editor.mind': 'Mind Editor',
   'menu.editor.koni': 'Koni Editor',
   'menu.document': 'Document Manage',
-  'menu.document.template': 'Template Setting',
+  'menu.document.template': 'Template Manage',
+  'menu.document.template.definition': 'Template Setting',
 };

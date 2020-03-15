@@ -50,5 +50,6 @@ export default {
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
   'menu.document': '文档管理',
-  'menu.document.template': '模版定义',
+  'menu.document.template': '模版管理',
+  'menu.document.template.definition': '模版定义',
 };

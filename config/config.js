@@ -134,6 +134,13 @@ export default {
                   path: '/document/template',
                   component: './document/template',
                 },
+                {
+                  name: 'template.definition',
+                  icon: 'smile',
+                  hideInMenu: true,
+                  path: '/document/template/definition',
+                  component: './document/template/definition',
+                },
               ],
             },
             {
