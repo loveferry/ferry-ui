@@ -1,20 +1,17 @@
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { Button, Card, DatePicker, Input, Form, InputNumber, Radio, Select, Tooltip } from 'antd';
+import { Button, Card, Input, Form, Tooltip } from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import React from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'dva';
 import styles from './style.less';
-
 const FormItem = Form.Item;
-const { Option } = Select;
-const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 const Definition = props => {
   const { submitting } = props;
   const [form] = Form.useForm();
-  const [showPublicUsers, setShowPublicUsers] = React.useState(false);
+  const [setShowPublicUsers] = React.useState(false);
   const formItemLayout = {
     labelCol: {
       xs: {
@@ -52,7 +49,7 @@ const Definition = props => {
   const onFinish = values => {
     const { dispatch } = props;
     dispatch({
-      type: 'documentTemplateDefinition/submitRegularForm',
+      type: 'documentTemplateDefinition/submit',
       payload: values,
     });
   };
@@ -190,5 +187,5 @@ const Definition = props => {
 };
 
 export default connect(({ loading }) => ({
-  submitting: loading.effects['documentTemplateDefinition/submitRegularForm'],
+  submitting: loading.effects['documentTemplateDefinition/submit'],
 }))(Definition);

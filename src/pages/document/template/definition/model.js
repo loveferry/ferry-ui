@@ -5,7 +5,7 @@ const Model = {
   namespace: 'documentTemplateDefinition',
   state: {},
   effects: {
-    *submitRegularForm({ payload }, { call }) {
+    *submit({ payload }, { call }) {
       yield call(fakeSubmitForm, payload);
       message.success('提交成功');
     },
