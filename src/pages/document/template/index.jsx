@@ -4,10 +4,13 @@ import React, {Component} from 'react';
 import {PageHeaderWrapper} from '@ant-design/pro-layout';
 import {connect} from 'dva';
 import styles from './style.less';
+import { routerRedux } from 'dva/router';
 
 const {Paragraph} = Typography;
+const templateDefinitionPage = '/document/template/definition';
 
 class Template extends Component {
+
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch({
@@ -23,8 +26,19 @@ class Template extends Component {
     window.location.href = '/api/sys/attachment/download?sourceType=DOC_TEMPLATE&sourceKey='+templateId;
   }
 
-  add(props) {
-    props.history.push('/document/template/definition');
+  update(template) {
+    const { dispatch } = this.props;
+    dispatch(routerRedux.push({
+      pathname: templateDefinitionPage,
+      params: template
+    }))
+  }
+
+  add() {
+    const { dispatch } = this.props;
+    dispatch(routerRedux.push({
+      pathname: templateDefinitionPage,
+    }))
   }
 
   render() {
@@ -69,6 +83,7 @@ class Template extends Component {
                     <Card
                       hoverable
                       className={styles.card}
+                      onClick={() => this.update(item)}
                       actions={[
                         <Upload {
                                   ...{
@@ -127,8 +142,8 @@ class Template extends Component {
 
               return (
                 <List.Item>
-                  <Button type="dashed" className={styles.newButton} onClick={() => this.add(this.props)}>
-                    <PlusOutlined/> 新增产品
+                  <Button type="dashed" className={styles.newButton} onClick={() => this.add()}>
+                    <PlusOutlined/> 模版定义
                   </Button>
                 </List.Item>
               );

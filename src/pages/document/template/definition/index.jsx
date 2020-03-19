@@ -10,6 +10,8 @@ const { TextArea } = Input;
 
 const Definition = props => {
   const { submitting } = props;
+  const { history } = props;
+  const { template } = { ...{}, template: props.location.params || {} };
   const [form] = Form.useForm();
   const [setShowPublicUsers] = React.useState(false);
   const formItemLayout = {
@@ -51,6 +53,7 @@ const Definition = props => {
     dispatch({
       type: 'documentTemplateDefinition/submit',
       payload: values,
+      history: history,
     });
   };
 
@@ -76,7 +79,10 @@ const Definition = props => {
           form={form}
           name="basic"
           initialValues={{
-            public: '1',
+            templateCode: template.templateCode,
+            templateName: template.templateName,
+            templateImage: template.templateImage,
+            description: template.description,
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
@@ -96,6 +102,7 @@ const Definition = props => {
             ]}
           >
             <Input
+              disabled={template.templateCode}
               placeholder={formatMessage({
                 id: 'documentTemplateDefinition.templateCode.placeholder',
               })}
@@ -147,11 +154,11 @@ const Definition = props => {
             {...formItemLayout}
             label={
               <span>
-                <FormattedMessage id="documentTemplateDefinition.image.label" />
+                <FormattedMessage id="documentTemplateDefinition.templateImage.label" />
                 <em className={styles.optional}>
                   <FormattedMessage id="documentTemplateDefinition.form.optional" />
                   <Tooltip
-                    title={<FormattedMessage id="documentTemplateDefinition.image.tooltip" />}
+                    title={<FormattedMessage id="documentTemplateDefinition.templateImage.tooltip" />}
                   >
                     <InfoCircleOutlined
                       style={{
@@ -162,11 +169,11 @@ const Definition = props => {
                 </em>
               </span>
             }
-            name="image"
+            name="templateImage"
           >
             <Input
               placeholder={formatMessage({
-                id: 'documentTemplateDefinition.image.placeholder',
+                id: 'documentTemplateDefinition.templateImage.placeholder',
               })}
             />
           </FormItem>
