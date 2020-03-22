@@ -141,6 +141,10 @@ export default {
                   path: '/document/template/definition',
                   component: './document/template/definition',
                 },
+                {
+                  path: '/document',
+                  redirect: '/document/template',
+                },
               ],
             },
             {
