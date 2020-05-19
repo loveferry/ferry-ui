@@ -51,4 +51,5 @@ export default {
   'menu.editor.koni': 'Koni Editor',
   'menu.document.template': 'Template Manage',
   'menu.document.template.definition': 'Template Setting',
+  'menu.document.template.param': 'Param Manage',
 };

@@ -52,4 +52,5 @@ export default {
   'menu.document': '文档管理',
   'menu.document.template': '模版管理',
   'menu.document.template.definition': '模版定义',
+  'menu.document.template.param': '参数管理',
 };

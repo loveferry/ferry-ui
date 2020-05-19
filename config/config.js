@@ -142,6 +142,13 @@ export default {
                   component: './document/template/definition',
                 },
                 {
+                  name: 'template.param',
+                  icon: 'smile',
+                  hideInMenu: true,
+                  path: '/document/template/param/:code',
+                  component: './document/template/ParamManage',
+                },
+                {
                   path: '/document',
                   redirect: '/document/template',
                 },

@@ -8,6 +8,7 @@ import { routerRedux } from 'dva/router';
 import {formatMessage} from "umi-plugin-react/locale";
 const { Paragraph } = Typography;
 const templateDefinitionPage = '/document/template/definition';
+const templateParamPage = '/document/template/param/';
 
 class Template extends Component {
   componentDidMount() {
@@ -43,16 +44,16 @@ class Template extends Component {
   }
 
   add() {
+    this.update();
+  }
+
+  params(templateCode){
     const { dispatch } = this.props;
     dispatch(
       routerRedux.push({
-        pathname: templateDefinitionPage,
+        pathname: templateParamPage+templateCode,
       })
     );
-  }
-
-  params(templateId){
-
   }
 
   render() {
@@ -143,7 +144,7 @@ class Template extends Component {
                           <DownloadOutlined />
                           下载
                         </Button>,
-                        <Button onClick={() => this.params(item.templateId)}>
+                        <Button onClick={() => this.params(item.templateCode)}>
                           <PicLeftOutlined />
                           参数
                         </Button>,
