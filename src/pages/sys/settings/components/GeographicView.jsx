@@ -15,7 +15,7 @@ class GeographicView extends Component {
 
     if (dispatch) {
       dispatch({
-        type: 'accountAndsettings/fetchProvince',
+        type: 'sysSettings/fetchProvince',
       });
     }
   };
@@ -26,7 +26,7 @@ class GeographicView extends Component {
     if (!props.value && !!value && !!value.province) {
       if (dispatch) {
         dispatch({
-          type: 'accountAndsettings/fetchCity',
+          type: 'sysSettings/fetchCity',
           payload: value.province.key,
         });
       }
@@ -74,7 +74,7 @@ class GeographicView extends Component {
 
     if (dispatch) {
       dispatch({
-        type: 'accountAndsettings/fetchCity',
+        type: 'sysSettings/fetchCity',
         payload: item.key,
       });
     }
@@ -143,11 +143,11 @@ class GeographicView extends Component {
   }
 }
 
-export default connect(({ accountAndsettings, loading }) => {
-  const { province, city } = accountAndsettings;
+export default connect(({ sysSettings, loading }) => {
+  const { province, city } = sysSettings;
   return {
     province,
     city,
-    loading: loading.models.accountAndsettings,
+    loading: loading.models.sysSettings,
   };
 })(GeographicView);

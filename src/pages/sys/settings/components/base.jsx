@@ -15,7 +15,7 @@ const { Option } = Select; // 头像组件 方便以后独立，增加裁剪之�
 const AvatarView = ({ avatar }) => (
   <Fragment>
     <div className={styles.avatar_title}>
-      <FormattedMessage id="accountandsettings.basic.avatar" defaultMessage="Avatar" />
+      <FormattedMessage id="sysSettings.basic.avatar" defaultMessage="Avatar" />
     </div>
     <div className={styles.avatar}>
       <img src={avatar} alt="avatar" />
@@ -25,7 +25,7 @@ const AvatarView = ({ avatar }) => (
         <Button>
           <UploadOutlined />
           <FormattedMessage
-            id="accountandsettings.basic.change-avatar"
+            id="sysSettings.basic.change-avatar"
             defaultMessage="Change avatar"
           />
         </Button>
@@ -107,7 +107,7 @@ class BaseView extends Component {
       if (!err) {
         message.success(
           formatMessage({
-            id: 'accountandsettings.basic.update.success',
+            id: 'sysSettings.basic.update.success',
           }),
         );
       }
@@ -124,7 +124,7 @@ class BaseView extends Component {
           <Form layout="vertical" hideRequiredMark>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.email',
+                id: 'sysSettings.basic.email',
               })}
             >
               {getFieldDecorator('email', {
@@ -133,7 +133,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.email-message',
+                        id: 'sysSettings.basic.email-message',
                       },
                       {},
                     ),
@@ -143,7 +143,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.nickname',
+                id: 'sysSettings.basic.nickname',
               })}
             >
               {getFieldDecorator('name', {
@@ -152,7 +152,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.nickname-message',
+                        id: 'sysSettings.basic.nickname-message',
                       },
                       {},
                     ),
@@ -162,7 +162,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.profile',
+                id: 'sysSettings.basic.profile',
               })}
             >
               {getFieldDecorator('profile', {
@@ -171,7 +171,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.profile-message',
+                        id: 'sysSettings.basic.profile-message',
                       },
                       {},
                     ),
@@ -180,7 +180,7 @@ class BaseView extends Component {
               })(
                 <Input.TextArea
                   placeholder={formatMessage({
-                    id: 'accountandsettings.basic.profile-placeholder',
+                    id: 'sysSettings.basic.profile-placeholder',
                   })}
                   rows={4}
                 />,
@@ -188,7 +188,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.country',
+                id: 'sysSettings.basic.country',
               })}
             >
               {getFieldDecorator('country', {
@@ -197,7 +197,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.country-message',
+                        id: 'sysSettings.basic.country-message',
                       },
                       {},
                     ),
@@ -215,7 +215,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.geographic',
+                id: 'sysSettings.basic.geographic',
               })}
             >
               {getFieldDecorator('geographic', {
@@ -224,7 +224,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.geographic-message',
+                        id: 'sysSettings.basic.geographic-message',
                       },
                       {},
                     ),
@@ -237,7 +237,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.address',
+                id: 'sysSettings.basic.address',
               })}
             >
               {getFieldDecorator('address', {
@@ -246,7 +246,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.address-message',
+                        id: 'sysSettings.basic.address-message',
                       },
                       {},
                     ),
@@ -256,7 +256,7 @@ class BaseView extends Component {
             </FormItem>
             <FormItem
               label={formatMessage({
-                id: 'accountandsettings.basic.phone',
+                id: 'sysSettings.basic.phone',
               })}
             >
               {getFieldDecorator('phone', {
@@ -265,7 +265,7 @@ class BaseView extends Component {
                     required: true,
                     message: formatMessage(
                       {
-                        id: 'accountandsettings.basic.phone-message',
+                        id: 'sysSettings.basic.phone-message',
                       },
                       {},
                     ),
@@ -278,7 +278,7 @@ class BaseView extends Component {
             </FormItem>
             <Button type="primary" onClick={this.handlerSubmit}>
               <FormattedMessage
-                id="accountandsettings.basic.update"
+                id="sysSettings.basic.update"
                 defaultMessage="Update Information"
               />
             </Button>
@@ -292,6 +292,6 @@ class BaseView extends Component {
   }
 }
 
-export default connect(({ accountAndsettings }) => ({
-  currentUser: accountAndsettings.currentUser,
+export default connect(({ sysSettings }) => ({
+  currentUser: sysSettings.currentUser,
 }))(Form.create()(BaseView));

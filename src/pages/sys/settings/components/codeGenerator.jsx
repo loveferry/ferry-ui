@@ -2,15 +2,15 @@ import { List, Switch } from 'antd';
 import React, { Component, Fragment } from 'react';
 import { formatMessage } from 'umi-plugin-react/locale';
 
-class NotificationView extends Component {
+class CodeGeneratorView extends Component {
   getData = () => {
     const Action = (
       <Switch
         checkedChildren={formatMessage({
-          id: 'accountandsettings.settings.open',
+          id: 'sysSettings.settings.open',
         })}
         unCheckedChildren={formatMessage({
-          id: 'accountandsettings.settings.close',
+          id: 'sysSettings.settings.close',
         })}
         defaultChecked
       />
@@ -19,13 +19,13 @@ class NotificationView extends Component {
       {
         title: formatMessage(
           {
-            id: 'accountandsettings.notification.password',
+            id: 'sysSettings.notification.password',
           },
           {},
         ),
         description: formatMessage(
           {
-            id: 'accountandsettings.notification.password-description',
+            id: 'sysSettings.notification.password-description',
           },
           {},
         ),
@@ -34,13 +34,13 @@ class NotificationView extends Component {
       {
         title: formatMessage(
           {
-            id: 'accountandsettings.notification.messages',
+            id: 'sysSettings.notification.messages',
           },
           {},
         ),
         description: formatMessage(
           {
-            id: 'accountandsettings.notification.messages-description',
+            id: 'sysSettings.notification.messages-description',
           },
           {},
         ),
@@ -49,13 +49,13 @@ class NotificationView extends Component {
       {
         title: formatMessage(
           {
-            id: 'accountandsettings.notification.todo',
+            id: 'sysSettings.notification.todo',
           },
           {},
         ),
         description: formatMessage(
           {
-            id: 'accountandsettings.notification.todo-description',
+            id: 'sysSettings.notification.todo-description',
           },
           {},
         ),
@@ -82,4 +82,4 @@ class NotificationView extends Component {
   }
 }
 
-export default NotificationView;
+export default CodeGeneratorView;

@@ -6,6 +6,7 @@ import { connect } from 'dva';
 import BaseView from './components/base';
 import BindingView from './components/binding';
 import NotificationView from './components/notification';
+import CodeGeneratorView from './components/codeGenerator';
 import SecurityView from './components/security';
 import styles from './style.less';
 
@@ -17,39 +18,46 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     const menuMap = {
-      base: (
-        <FormattedMessage id="accountandsettings.menuMap.basic" defaultMessage="Basic Settings" />
+      /*base: (
+        <FormattedMessage id="sysSettings.menuMap.basic" defaultMessage="Basic Settings" />
       ),
       security: (
         <FormattedMessage
-          id="accountandsettings.menuMap.security"
+          id="sysSettings.menuMap.security"
           defaultMessage="Security Settings"
         />
       ),
       binding: (
         <FormattedMessage
-          id="accountandsettings.menuMap.binding"
+          id="sysSettings.menuMap.binding"
           defaultMessage="Account Binding"
         />
       ),
       notification: (
         <FormattedMessage
-          id="accountandsettings.menuMap.notification"
+          id="sysSettings.menuMap.notification"
           defaultMessage="New Message Notification"
         />
+      ),*/
+      codeGenerator: (
+        <FormattedMessage
+          id="sysSettings.menuMap.codeGenerator"
+          defaultMessage="code generator"
+        />
       ),
+
     };
     this.state = {
       mode: 'inline',
       menuMap,
-      selectKey: 'base',
+      selectKey: 'codeGenerator',
     };
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'accountAndsettings/fetchCurrent',
+      type: 'sysSettings/fetchCurrent',
     });
     window.addEventListener('resize', this.resize);
     this.resize();
@@ -108,16 +116,14 @@ class Settings extends Component {
     switch (selectKey) {
       case 'base':
         return <BaseView />;
-
       case 'security':
         return <SecurityView />;
-
       case 'binding':
         return <BindingView />;
-
       case 'notification':
         return <NotificationView />;
-
+      case 'codeGenerator':
+        return <CodeGeneratorView />;
       default:
         break;
     }
@@ -158,6 +164,6 @@ class Settings extends Component {
   }
 }
 
-export default connect(({ accountAndsettings }) => ({
-  currentUser: accountAndsettings.currentUser,
+export default connect(({ sysSettings }) => ({
+  currentUser: sysSettings.currentUser,
 }))(Settings);

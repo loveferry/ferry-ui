@@ -8,19 +8,19 @@ class BindingView extends Component {
     {
       title: formatMessage(
         {
-          id: 'accountandsettings.binding.taobao',
+          id: 'sysSettings.binding.taobao',
         },
         {},
       ),
       description: formatMessage(
         {
-          id: 'accountandsettings.binding.taobao-description',
+          id: 'sysSettings.binding.taobao-description',
         },
         {},
       ),
       actions: [
         <a key="Bind">
-          <FormattedMessage id="accountandsettings.binding.bind" defaultMessage="Bind" />
+          <FormattedMessage id="sysSettings.binding.bind" defaultMessage="Bind" />
         </a>,
       ],
       avatar: <TaobaoOutlined className="taobao" />,
@@ -28,19 +28,19 @@ class BindingView extends Component {
     {
       title: formatMessage(
         {
-          id: 'accountandsettings.binding.alipay',
+          id: 'sysSettings.binding.alipay',
         },
         {},
       ),
       description: formatMessage(
         {
-          id: 'accountandsettings.binding.alipay-description',
+          id: 'sysSettings.binding.alipay-description',
         },
         {},
       ),
       actions: [
         <a key="Bind">
-          <FormattedMessage id="accountandsettings.binding.bind" defaultMessage="Bind" />
+          <FormattedMessage id="sysSettings.binding.bind" defaultMessage="Bind" />
         </a>,
       ],
       avatar: <AlipayOutlined className="alipay" />,
@@ -48,19 +48,19 @@ class BindingView extends Component {
     {
       title: formatMessage(
         {
-          id: 'accountandsettings.binding.dingding',
+          id: 'sysSettings.binding.dingding',
         },
         {},
       ),
       description: formatMessage(
         {
-          id: 'accountandsettings.binding.dingding-description',
+          id: 'sysSettings.binding.dingding-description',
         },
         {},
       ),
       actions: [
         <a key="Bind">
-          <FormattedMessage id="accountandsettings.binding.bind" defaultMessage="Bind" />
+          <FormattedMessage id="sysSettings.binding.bind" defaultMessage="Bind" />
         </a>,
       ],
       avatar: <DingdingOutlined className="dingding" />,

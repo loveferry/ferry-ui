@@ -124,6 +124,29 @@ export default {
           authority: ['admin'],
           routes: [
             {
+              name: 'sys',
+              icon: 'user',
+              path: '/sys',
+              routes: [
+                {
+                  name: 'center',
+                  icon: 'smile',
+                  path: '/sys/center',
+                  component: './sys/center',
+                },
+                {
+                  name: 'settings',
+                  icon: 'smile',
+                  path: '/sys/settings',
+                  component: './sys/settings',
+                },
+                {
+                  path: '/sys',
+                  redirect: '/sys/settings',
+                },
+              ],
+            },
+            {
               name: 'document',
               icon: 'smile',
               path: '/document',
@@ -312,25 +335,6 @@ export default {
                   icon: 'smile',
                   path: '/exception/500',
                   component: './exception/500',
-                },
-              ],
-            },
-            {
-              name: 'account',
-              icon: 'user',
-              path: '/account',
-              routes: [
-                {
-                  name: 'center',
-                  icon: 'smile',
-                  path: '/account/center',
-                  component: './account/center',
-                },
-                {
-                  name: 'settings',
-                  icon: 'smile',
-                  path: '/account/settings',
-                  component: './account/settings',
                 },
               ],
             },

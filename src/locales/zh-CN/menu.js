@@ -40,9 +40,6 @@ export default {
   'menu.exception.not-find': '404',
   'menu.exception.server-error': '500',
   'menu.exception.trigger': '触发错误',
-  'menu.account': '个人页',
-  'menu.account.center': '个人中心',
-  'menu.account.settings': '个人设置',
   'menu.account.trigger': '触发报错',
   'menu.account.logout': '退出登录',
   'menu.editor': '图形编辑器',
@@ -53,4 +50,7 @@ export default {
   'menu.document.template': '模版管理',
   'menu.document.template.definition': '模版定义',
   'menu.document.template.param': '参数管理',
+  'menu.sys': '系统管理',
+  'menu.sys.center': '个人中心',
+  'menu.sys.settings': '系统设置',
 };
