@@ -3,7 +3,6 @@ export default {
   'sysSettings.menuMap.security': 'Security Settings',
   'sysSettings.menuMap.binding': 'Account Binding',
   'sysSettings.menuMap.notification': 'New Message Notification',
-  'sysSettings.menuMap.codeGenerator': 'code generator',
   'sysSettings.basic.avatar': 'Avatar',
   'sysSettings.basic.change-avatar': 'Change avatar',
   'sysSettings.basic.email': 'Email',
@@ -59,4 +58,10 @@ export default {
     'The to-do list will be notified in the form of a letter from the station',
   'sysSettings.settings.open': 'Open',
   'sysSettings.settings.close': 'Close',
+
+
+  'sysSettings.menuMap.codeGenerator': 'code generator',
+  'sysSettings.codeGenerator.tableName.label': 'table name',
+  'sysSettings.codeGenerator.tableName.required': 'Please enter table name',
+  'sysSettings.codeGenerator.tableName.placeholder': 'table name',
 };

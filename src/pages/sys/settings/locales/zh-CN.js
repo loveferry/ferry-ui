@@ -3,7 +3,6 @@ export default {
   'sysSettings.menuMap.security': '安全设置',
   'sysSettings.menuMap.binding': '账号绑定',
   'sysSettings.menuMap.notification': '新消息通知',
-  'sysSettings.menuMap.codeGenerator': '代码生成器',
   'sysSettings.basic.avatar': '头像',
   'sysSettings.basic.change-avatar': '更换头像',
   'sysSettings.basic.email': '邮箱',
@@ -54,4 +53,13 @@ export default {
   'sysSettings.notification.todo-description': '待办任务将以站内信的形式通知',
   'sysSettings.settings.open': '开',
   'sysSettings.settings.close': '关',
+
+
+
+
+  'sysSettings.menuMap.codeGenerator': '代码生成器',
+  'sysSettings.codeGenerator.tableName.label': '表名',
+  'sysSettings.codeGenerator.tableName.required': '请输入表名',
+  'sysSettings.codeGenerator.tableName.placeholder': '表名',
+
 };

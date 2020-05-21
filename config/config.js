@@ -129,16 +129,16 @@ export default {
               path: '/sys',
               routes: [
                 {
-                  name: 'center',
-                  icon: 'smile',
-                  path: '/sys/center',
-                  component: './sys/center',
-                },
-                {
                   name: 'settings',
                   icon: 'smile',
                   path: '/sys/settings',
                   component: './sys/settings',
+                },
+                {
+                  name: 'center',
+                  icon: 'smile',
+                  path: '/sys/center',
+                  component: './sys/center',
                 },
                 {
                   path: '/sys',

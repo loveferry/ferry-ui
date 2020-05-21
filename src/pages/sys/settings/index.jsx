@@ -155,7 +155,6 @@ class Settings extends Component {
             </Menu>
           </div>
           <div className={styles.right}>
-            <div className={styles.title}>{this.getRightTitle()}</div>
             {this.renderChildren()}
           </div>
         </div>
