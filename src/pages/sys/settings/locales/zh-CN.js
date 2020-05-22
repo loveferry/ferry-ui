@@ -58,8 +58,42 @@ export default {
 
 
   'sysSettings.menuMap.codeGenerator': '代码生成器',
+
   'sysSettings.codeGenerator.tableName.label': '表名',
   'sysSettings.codeGenerator.tableName.required': '请输入表名',
   'sysSettings.codeGenerator.tableName.placeholder': '表名',
+
+  'sysSettings.codeGenerator.projectPath.label': '项目路径',
+  'sysSettings.codeGenerator.projectPath.required': '请输入项目路径',
+  'sysSettings.codeGenerator.projectPath.placeholder': '/Users/ferry/workspace/ferry/ferry/base',
+
+  'sysSettings.codeGenerator.packagePath.label': '包路径',
+  'sysSettings.codeGenerator.packagePath.required': '请输入包路径',
+  'sysSettings.codeGenerator.packagePath.placeholder': 'cn.org.ferry.sys',
+
+  'sysSettings.codeGenerator.entityName.label': '实体类',
+  'sysSettings.codeGenerator.entityName.required': '请输入实体类',
+  'sysSettings.codeGenerator.entityName.placeholder': 'TableName',
+
+  'sysSettings.codeGenerator.mapperJavaName.label': 'mybatis接口类',
+  'sysSettings.codeGenerator.mapperJavaName.required': '请输入mybatis接口类名称',
+  'sysSettings.codeGenerator.mapperJavaName.placeholder': 'TableNameMapper',
+
+  'sysSettings.codeGenerator.mapperXmlName.label': 'mybatis映射器',
+  'sysSettings.codeGenerator.mapperXmlName.required': '请输入mybatis映射器名称',
+  'sysSettings.codeGenerator.mapperXmlName.placeholder': 'TableNameMapper',
+
+  'sysSettings.codeGenerator.serviceName.label': '业务接口类',
+  'sysSettings.codeGenerator.serviceName.required': '请输入业务接口类名称',
+  'sysSettings.codeGenerator.serviceName.placeholder': 'TableNameService',
+
+  'sysSettings.codeGenerator.serviceImplName.label': '业务实现类',
+  'sysSettings.codeGenerator.serviceImplName.required': '请输入业务实现类名称',
+  'sysSettings.codeGenerator.serviceImplName.placeholder': 'TableNameServiceImpl',
+
+  'sysSettings.codeGenerator.controllerName.label': '控制器',
+  'sysSettings.codeGenerator.controllerName.required': '请输入控制器名称',
+  'sysSettings.codeGenerator.controllerName.placeholder': 'TableNameController',
+
 
 };

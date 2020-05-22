@@ -64,4 +64,38 @@ export default {
   'sysSettings.codeGenerator.tableName.label': 'table name',
   'sysSettings.codeGenerator.tableName.required': 'Please enter table name',
   'sysSettings.codeGenerator.tableName.placeholder': 'table name',
+
+  'sysSettings.codeGenerator.projectPath.label': 'project path',
+  'sysSettings.codeGenerator.projectPath.required': 'Please enter project path',
+  'sysSettings.codeGenerator.projectPath.placeholder': '/Users/ferry/workspace/ferry/ferry/base',
+
+  'sysSettings.codeGenerator.packagePath.label': 'package path',
+  'sysSettings.codeGenerator.packagePath.required': 'Please enter package path',
+  'sysSettings.codeGenerator.packagePath.placeholder': 'cn.org.ferry.sys',
+
+  'sysSettings.codeGenerator.entityName.label': 'entity name',
+  'sysSettings.codeGenerator.entityName.required': 'Please enter entity name',
+  'sysSettings.codeGenerator.entityName.placeholder': 'TableName',
+
+  'sysSettings.codeGenerator.mapperJavaName.label': 'mybatis interface class',
+  'sysSettings.codeGenerator.mapperJavaName.required': 'Please enter mybatis interface class name',
+  'sysSettings.codeGenerator.mapperJavaName.placeholder': 'TableNameMapper',
+
+  'sysSettings.codeGenerator.mapperXmlName.label': 'mybatis mapper',
+  'sysSettings.codeGenerator.mapperXmlName.required': 'Please enter mybatis mapper name',
+  'sysSettings.codeGenerator.mapperXmlName.placeholder': 'TableNameMapper',
+
+  'sysSettings.codeGenerator.serviceName.label': 'service name',
+  'sysSettings.codeGenerator.serviceName.required': 'Please enter service name',
+  'sysSettings.codeGenerator.serviceName.placeholder': 'TableNameService',
+
+  'sysSettings.codeGenerator.serviceImplName.label': 'service impl name',
+  'sysSettings.codeGenerator.serviceImplName.required': 'Please enter service impl name',
+  'sysSettings.codeGenerator.serviceImplName.placeholder': 'TableNameServiceImpl',
+
+  'sysSettings.codeGenerator.controllerName.label': 'controller name',
+  'sysSettings.codeGenerator.controllerName.required': 'Please enter controller name',
+  'sysSettings.codeGenerator.controllerName.placeholder': 'TableNameController',
+
+
 };

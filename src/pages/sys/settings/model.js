@@ -1,4 +1,4 @@
-import { queryCity, queryCurrent, queryProvince, queryTableName, query as queryUsers } from './service';
+import { queryCity, queryCurrent, queryProvince, query as queryUsers } from './service';
 
 const Model = {
   namespace: 'sysSettings',
@@ -15,14 +15,6 @@ const Model = {
       yield put({
         type: 'save',
         payload: response,
-      });
-    },
-
-    *tableNameQuery({ payload }, { call, put }) {
-      const {maps} = yield call(queryTableName, payload);
-      yield put({
-        type: 'tableNames',
-        payload: {tableNames: maps},
       });
     },
 
@@ -80,9 +72,6 @@ const Model = {
 
     changeLoading(state, action) {
       return { ...state, isLoading: action.payload };
-    },
-    tableNames(state, action) {
-      return { ...state, tableNames: action.payload.tableNames || []} ;
     },
   },
 };

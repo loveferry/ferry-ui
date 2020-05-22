@@ -1,19 +1,17 @@
-import { InfoCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Input, Form, Tooltip } from 'antd';
+import { Button, Card, Input, Form } from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import React, { useState } from 'react';
 import { connect } from 'dva';
 import { AutoComplete } from 'antd';
-import styles from '../styles/codeGeneratorStyle.less';
+import axios from '@/utils/axios';
 const FormItem = Form.Item;
-const { TextArea } = Input;
 
 
 const CodeGeneratorView = props => {
   const [tableName, setTableName] = useState('');
   const [tableNameOptions, setTableNameOptions] = useState([]);
 
-  const { loading, history, tableNames } = props;
+  const { loading, history } = props;
   const [form] = Form.useForm();
 
   const formItemLayout = {
@@ -50,18 +48,6 @@ const CodeGeneratorView = props => {
     },
   };
 
-  const filterTableName = values => {
-    const { dispatch } = props;
-    dispatch({
-      type: 'sysSettings/tableNameQuery',
-      payload: {
-        tableName: values,
-        page: 1,
-        pageSize: 5
-      }
-    });
-  };
-
   const onFinish = values => {
     const { dispatch } = props;
     dispatch({
@@ -75,15 +61,29 @@ const CodeGeneratorView = props => {
     console.log('Failed:', errorInfo);
   };
 
-
-  const onTableNameSearch = searchText => {
-    filterTableName(searchText);
-    console.log(tableNames);
-    setTableNameOptions(tableNames);
+  const loadTableNameOptions = tableNames => {
+    tableNames.forEach(e => e.value = e.tableName);
   };
 
-  const onTableNameSelect = data => {
-    console.log('select table name', data);
+  const onTableNameSearch = searchText => {
+    axios.get('/api/table/name/query', {
+      params: {
+        tableName: searchText,
+        page: 1,
+        pageSize: 5
+      }
+    })
+      .then(function (response) {
+        loadTableNameOptions(response.maps);
+        setTableNameOptions(response.maps);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const onTableNameSelect = (data, option) => {
+
   };
 
   const onTableNameChange = data => {
@@ -118,9 +118,6 @@ const CodeGeneratorView = props => {
           <AutoComplete
             value={tableName}
             options={tableNameOptions}
-            style={{
-              width: 200,
-            }}
             onSelect={onTableNameSelect}
             onSearch={onTableNameSearch}
             onChange={onTableNameChange}
@@ -131,70 +128,153 @@ const CodeGeneratorView = props => {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label={<FormattedMessage id="documentTemplateDefinition.templateName.label" />}
-          name="templateName"
+          label={<FormattedMessage id="sysSettings.codeGenerator.projectPath.label" />}
+          name="projectPath"
           rules={[
             {
               required: true,
               message: formatMessage({
-                id: 'documentTemplateDefinition.templateName.required',
+                id: 'sysSettings.codeGenerator.projectPath.required',
               }),
             },
           ]}
         >
           <Input
             placeholder={formatMessage({
-              id: 'documentTemplateDefinition.templateName.placeholder',
+              id: 'sysSettings.codeGenerator.projectPath.placeholder',
             })}
           />
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label={<FormattedMessage id="documentTemplateDefinition.description.label" />}
-          name="description"
+          label={<FormattedMessage id="sysSettings.codeGenerator.packagePath.label" />}
+          name="packagePath"
           rules={[
             {
               required: true,
               message: formatMessage({
-                id: 'documentTemplateDefinition.description.required',
+                id: 'sysSettings.codeGenerator.packagePath.required',
               }),
             },
           ]}
         >
-          <TextArea
-            style={{
-              minHeight: 32,
-            }}
+          <Input
             placeholder={formatMessage({
-              id: 'documentTemplateDefinition.description.placeholder',
+              id: 'sysSettings.codeGenerator.packagePath.placeholder',
             })}
-            rows={4}
           />
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label={
-            <span>
-              <FormattedMessage id="documentTemplateDefinition.templateImage.label" />
-              <em className={styles.optional}>
-                <FormattedMessage id="documentTemplateDefinition.form.optional" />
-                <Tooltip
-                  title={<FormattedMessage id="documentTemplateDefinition.templateImage.tooltip" />}
-                >
-                  <InfoCircleOutlined
-                    style={{
-                      marginRight: 4,
-                    }}
-                  />
-                </Tooltip>
-              </em>
-            </span>
-          }
-          name="templateImage"
+          label={<FormattedMessage id="sysSettings.codeGenerator.entityName.label" />}
+          name="entityName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.entityName.required',
+              }),
+            },
+          ]}
         >
           <Input
             placeholder={formatMessage({
-              id: 'documentTemplateDefinition.templateImage.placeholder',
+              id: 'sysSettings.codeGenerator.entityName.placeholder',
+            })}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.mapperJavaName.label" />}
+          name="mapperJavaName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.mapperJavaName.required',
+              }),
+            },
+          ]}
+        >
+          <Input
+            placeholder={formatMessage({
+              id: 'sysSettings.codeGenerator.mapperJavaName.placeholder',
+            })}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.mapperXmlName.label" />}
+          name="mapperXmlName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.mapperXmlName.required',
+              }),
+            },
+          ]}
+        >
+          <Input
+            placeholder={formatMessage({
+              id: 'sysSettings.codeGenerator.mapperXmlName.placeholder',
+            })}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.serviceName.label" />}
+          name="serviceName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.serviceName.required',
+              }),
+            },
+          ]}
+        >
+          <Input
+            placeholder={formatMessage({
+              id: 'sysSettings.codeGenerator.serviceName.placeholder',
+            })}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.serviceImplName.label" />}
+          name="serviceImplName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.serviceImplName.required',
+              }),
+            },
+          ]}
+        >
+          <Input
+            placeholder={formatMessage({
+              id: 'sysSettings.codeGenerator.serviceImplName.placeholder',
+            })}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.controllerName.label" />}
+          name="controllerName"
+          rules={[
+            {
+              required: true,
+              message: formatMessage({
+                id: 'sysSettings.codeGenerator.controllerName.required',
+              }),
+            },
+          ]}
+        >
+          <Input
+            placeholder={formatMessage({
+              id: 'sysSettings.codeGenerator.controllerName.placeholder',
             })}
           />
         </FormItem>

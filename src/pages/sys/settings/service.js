@@ -12,9 +12,3 @@ export async function queryCity(province) {
 export async function query() {
   return request('/api/users');
 }
-export async function queryTableName(params) {
-  return request('/api/table/name/query', {
-    method: 'GET',
-    params,
-  })
-}
