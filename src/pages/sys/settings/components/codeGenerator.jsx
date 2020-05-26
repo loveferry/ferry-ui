@@ -115,8 +115,8 @@ const CodeGeneratorView = props => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         initialValues={{
-          projectPath: '/Users/ferry/workspace/ferry/ferry',
-          packagePath: 'cn.org.ferry',
+          projectPath: '/Users/ferry/workspace/ferry/ferry/base',
+          packagePath: 'cn.org.ferry.sys',
           generateFlag: [
             'entityFlag',
             'mapperJavaFlag',
