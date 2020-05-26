@@ -95,5 +95,8 @@ export default {
   'sysSettings.codeGenerator.controllerName.required': '请输入控制器名称',
   'sysSettings.codeGenerator.controllerName.placeholder': 'TableNameController',
 
+  'sysSettings.codeGenerator.generateFlag.label': '生成标识',
+  'sysSettings.codeGenerator.form.label': '提交',
+
 
 };

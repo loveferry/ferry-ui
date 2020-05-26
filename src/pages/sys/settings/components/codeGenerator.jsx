@@ -1,4 +1,4 @@
-import { Button, Card, Input, Form } from 'antd';
+import {Button, Card, Input, Form, Checkbox, Row, Col, message} from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import React, { useState } from 'react';
 import { connect } from 'dva';
@@ -49,12 +49,20 @@ const CodeGeneratorView = props => {
   };
 
   const onFinish = values => {
-    const { dispatch } = props;
-    dispatch({
-      type: 'documentTemplateDefinition/submit',
-      payload: values,
-      history: history,
-    });
+    let generateCode = {...values};
+    if(values.generateFlag.length === 0){
+      message.warn("生成标识勾选数量未0，无意义的提交");
+      return ;
+    }
+    for (let i = 0; i < values.generateFlag.length; i++) {
+      generateCode[values.generateFlag[i]] = 'Y';
+    }
+    axios.post('/api/generate/code', generateCode)
+      .then(function (response) {
+        if(response){
+          message.success("生成成功!");
+        }
+      })
   };
 
   const onFinishFailed = errorInfo => {
@@ -73,17 +81,22 @@ const CodeGeneratorView = props => {
         pageSize: 5
       }
     })
-      .then(function (response) {
-        loadTableNameOptions(response.maps);
-        setTableNameOptions(response.maps);
+      .then(function (data) {
+        loadTableNameOptions(data);
+        setTableNameOptions(data);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
   };
 
   const onTableNameSelect = (data, option) => {
-
+    form.setFieldsValue({
+      'entityName': option.entityName,
+      'mapperJavaName': option.mapperJavaName,
+      'mapperXmlName': option.mapperXmlName,
+      'serviceName': option.serviceName,
+      'serviceImplName': option.serviceImplName,
+      'controllerName': option.controllerName,
+      'entityFlag': option.entityFlag,
+    });
   };
 
   const onTableNameChange = data => {
@@ -101,6 +114,18 @@ const CodeGeneratorView = props => {
         name="basic"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
+        initialValues={{
+          projectPath: '/Users/ferry/workspace/ferry/ferry',
+          packagePath: 'cn.org.ferry',
+          generateFlag: [
+            'entityFlag',
+            'mapperJavaFlag',
+            'mapperXmlFlag',
+            'serviceFlag',
+            'serviceImplFlag',
+            'controllerFlag'
+          ],
+        }}
       >
         <FormItem
           {...formItemLayout}
@@ -279,13 +304,42 @@ const CodeGeneratorView = props => {
           />
         </FormItem>
         <FormItem
+          {...formItemLayout}
+          label={<FormattedMessage id="sysSettings.codeGenerator.generateFlag.label" />}
+          name="generateFlag"
+        >
+          <Checkbox.Group style={{ width: '100%' }}>
+            <Row>
+              <Col span={8}>
+                <Checkbox value="entityFlag">实体类</Checkbox>
+              </Col>
+              <Col span={8}>
+                <Checkbox value="mapperJavaFlag">mybatis接口类</Checkbox>
+              </Col>
+              <Col span={8}>
+                <Checkbox value="mapperXmlFlag">mybatis映射器</Checkbox>
+              </Col>
+              <Col span={8}>
+                <Checkbox value="serviceFlag">业务接口类</Checkbox>
+              </Col>
+              <Col span={8}>
+                <Checkbox value="serviceImplFlag">业务实现类</Checkbox>
+              </Col>
+              <Col span={8}>
+                <Checkbox value="controllerFlag">控制器</Checkbox>
+              </Col>
+            </Row>
+          </Checkbox.Group>
+        </FormItem>
+
+        <FormItem
           {...submitFormLayout}
           style={{
             marginTop: 32,
           }}
         >
           <Button type="primary" htmlType="submit" loading={loading}>
-            <FormattedMessage id="documentTemplateDefinition.form.submit" />
+            <FormattedMessage id="sysSettings.codeGenerator.form.label" />
           </Button>
         </FormItem>
       </Form>
@@ -293,7 +347,7 @@ const CodeGeneratorView = props => {
   );
 };
 
-export default connect(({ generateCode, loading }) => ({
-  generateCode,
-  loading: loading.models.generateCode,
+export default connect(({ _, loading }) => ({
+  _,
+  loading: loading.models._,
 }))(CodeGeneratorView);

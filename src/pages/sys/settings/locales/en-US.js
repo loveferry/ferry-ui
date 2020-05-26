@@ -97,5 +97,8 @@ export default {
   'sysSettings.codeGenerator.controllerName.required': 'Please enter controller name',
   'sysSettings.codeGenerator.controllerName.placeholder': 'TableNameController',
 
+  'sysSettings.codeGenerator.generateFlag.label': 'generate flag',
+
+  'sysSettings.codeGenerator.form.label': 'submit',
 
 };
