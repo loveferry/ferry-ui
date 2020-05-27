@@ -70,7 +70,9 @@ const CodeGeneratorView = props => {
   };
 
   const loadTableNameOptions = tableNames => {
-    tableNames.forEach(e => e.value = e.tableName);
+    if(tableNames.length>0){
+      tableNames.forEach(e => e.value = e.tableName);
+    }
   };
 
   const onTableNameSearch = searchText => {
