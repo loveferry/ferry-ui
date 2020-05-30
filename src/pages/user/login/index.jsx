@@ -1,13 +1,11 @@
-import { AlipayCircleOutlined, TaobaoCircleOutlined, WeiboCircleOutlined } from '@ant-design/icons';
 import { Alert, Checkbox } from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import React, { Component } from 'react';
-import Link from 'umi/link';
 import { connect } from 'dva';
 import LoginComponents from './components/Login';
 import styles from './style.less';
 
-const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginComponents;
+const { Tab, UserName, Password, Submit } = LoginComponents;
 
 class Login extends Component {
   loginForm = undefined;
@@ -102,7 +100,7 @@ class Login extends Component {
                 }),
               )}
             <UserName
-              name="userCode"
+              name="username"
               placeholder={`${formatMessage({
                 id: 'userandlogin.login.userName',
               })}`}
