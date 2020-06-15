@@ -3,6 +3,7 @@ import {message} from 'antd';
 const axios = Axios.create();
 axios.defaults.baseURL = 'http://localhost:8888';
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+axios.defaults.withCredentials=true
 
 axios.interceptors.request.use(
   config => {

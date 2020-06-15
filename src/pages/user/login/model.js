@@ -20,6 +20,10 @@ const Model = {
         payload: response,
       }); // Login successfully
 
+      // 存放token
+      localStorage.setItem('access_token', responseData.maps[0].access_token);
+      localStorage.setItem('refresh_token', responseData.maps[0].refresh_token);
+
       if (response.status === 'ok') {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
