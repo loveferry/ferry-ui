@@ -47,7 +47,7 @@ const Login = props => {
                 return;
               }
             }
-            setAuthority('admin');
+            setAuthority(response[0].authorities);
             props.history.push(redirect || routerBase);
             setSubmitting(false);
           }
