@@ -3,8 +3,9 @@ import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import {Checkbox} from 'antd';
 import LoginComponents from './components/Login';
 import styles from './style.less';
-import axios from '@/utils/axios';
-import { getPageQuery, setAuthority } from './utils/utils';
+import request from '@/utils/request';
+import { setAuthority } from '@/utils/authority';
+import {parse} from "qs";
 
 const { Tab, UserName, Password, Submit } = LoginComponents;
 
@@ -22,15 +23,17 @@ const Login = props => {
   const handleSubmit = (err, values) => {
     if (!err) {
       setSubmitting(true);
-      axios.post('/api/login?type=JSON', values)
+      request.post('/api/login?type=JSON', {
+        data: values
+      })
         .then(function (response) {
           if(response){
+            let authrity = response.maps[0];
             // 存放token
-            localStorage.setItem('access_token', response[0].access_token);
-            localStorage.setItem('refresh_token', response[0].refresh_token);
-
+            sessionStorage.setItem('access_token', authrity.access_token);
+            sessionStorage.setItem('refresh_token', authrity.refresh_token);
             const urlParams = new URL(window.location.href);
-            const params = getPageQuery();
+            const params = parse(window.location.href.split('?')[1]);
             let { redirect } = params;
 
             if (redirect) {
@@ -47,7 +50,7 @@ const Login = props => {
                 return;
               }
             }
-            setAuthority(response[0].authorities);
+            setAuthority(authrity.authorities);
             props.history.push(redirect || routerBase);
             setSubmitting(false);
           }

@@ -121,7 +121,7 @@ export default {
           path: '/',
           component: '../layouts/BasicLayout',
           Routes: ['src/pages/Authorized'],
-          authority: ['admin'],
+          authority: ['ADMIN'],
           routes: [
             {
               name: 'sys',
@@ -366,7 +366,7 @@ export default {
             {
               path: '/',
               redirect: '/document/template',
-              authority: ['admin'],
+              authority: ['ADMIN'],
             },
             {
               component: '404',

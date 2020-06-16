@@ -2,7 +2,7 @@ import { reloadAuthorized } from './Authorized'; // use localStorage to store th
 
 export function getAuthority(str) {
   const authorityString =
-    typeof str === 'undefined' && localStorage ? localStorage.getItem('authorities') : str;
+    typeof str === 'undefined' && localStorage ? sessionStorage.getItem('authorities') : str;
 
   let authority;
 
@@ -22,7 +22,15 @@ export function getAuthority(str) {
 }
 export function setAuthority(authority) {
   const proAuthority = typeof authority === 'string' ? [authority] : authority;
-  localStorage.setItem('authorities', JSON.stringify(proAuthority)); // auto reload
+  sessionStorage.setItem('authorities', JSON.stringify(proAuthority)); // hard code
+  // reload Authorized component
 
-  reloadAuthorized();
+  try {
+    if (window.reloadAuthorized) {
+      window.reloadAuthorized();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return authority;
 }

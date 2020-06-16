@@ -8,7 +8,7 @@ export default {
       size: 'large',
       id: 'userName',
       prefix: <UserOutlined className={styles.prefixIcon} />,
-      placeholder: 'admin',
+      placeholder: 'ADMIN',
     },
     rules: [
       {

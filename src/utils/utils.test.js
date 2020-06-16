@@ -44,18 +44,18 @@ describe('getRouteAuthority tests', () => {
       {
         path: '/admin',
         name: 'admin',
-        authority: ['admin'],
+        authority: ['ADMIN'],
         exact: true,
       },
     ];
     expect(getRouteAuthority('/user', routes)).toEqual(['user']);
-    expect(getRouteAuthority('/admin', routes)).toEqual(['admin']);
+    expect(getRouteAuthority('/admin', routes)).toEqual(['ADMIN']);
   });
   it('should return inherited authority for unconfigured route', () => {
     const routes = [
       {
         path: '/nested',
-        authority: ['admin', 'user'],
+        authority: ['ADMIN', 'user'],
         exact: true,
       },
       {
