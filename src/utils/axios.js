@@ -7,7 +7,6 @@ axios.defaults.withCredentials=true;
 
 axios.interceptors.request.use(
   config => {
-    debugger
     if(!config.url.startsWith('/api/login')){
       config.headers[config.method].Authorization = 'Bearer ' + localStorage.getItem('access_token');
     }
